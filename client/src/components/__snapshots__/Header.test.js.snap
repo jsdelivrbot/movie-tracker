@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header renders correctly 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <BrowserRouter>
+    <Router
+      history={
+        Object {
+          "action": "POP",
+          "block": [Function],
+          "createHref": [Function],
+          "go": [Function],
+          "goBack": [Function],
+          "goForward": [Function],
+          "length": 1,
+          "listen": [Function],
+          "location": Object {
+            "hash": "",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+          "push": [Function],
+          "replace": [Function],
+        }
+      }
+    >
+      <Header>
+        <nav
+          className="navbar navbar-light"
+        >
+          <ul
+            className="nav navbar-nav"
+          >
+            <li
+              className="nav-item"
+            >
+              <Link
+                replace={false}
+                to="/"
+              >
+                <a
+                  href="/"
+                  onClick={[Function]}
+                >
+                  Home
+                </a>
+              </Link>
+            </li>
+            <li
+              className="nav-item"
+            >
+              <Link
+                replace={false}
+                to="/resources"
+              >
+                <a
+                  href="/resources"
+                  onClick={[Function]}
+                >
+                  Resources
+                </a>
+              </Link>
+            </li>
+            <li
+              className="nav-item"
+            >
+              <AuthButton>
+                <button
+                  data-test="auth-btn"
+                >
+                  Sign In
+                </button>
+              </AuthButton>
+            </li>
+          </ul>
+        </nav>
+      </Header>
+    </Router>
+  </BrowserRouter>
+</Provider>
+`;
