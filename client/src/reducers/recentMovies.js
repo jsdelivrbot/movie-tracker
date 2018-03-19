@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions';
 
-const initialState = {};
+const initialState = [];
 
 export default handleActions(
   {

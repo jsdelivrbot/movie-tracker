@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 
-import { Wrapper, Title, NavItems, NavItem } from './NavStyles';
+import { Wrapper, Title, NavItems, StyledLink } from './NavStyles';
+import Home from '../Home/Home';
+import SignIn from '../Auth/SignIn/SignIn';
+import SignOut from '../Auth/SignOut/SignOut';
 
 export default class Nav extends Component {
   render() {
@@ -8,9 +11,15 @@ export default class Nav extends Component {
       <Wrapper>
         <Title>MovieTracker</Title>
         <NavItems>
-          <NavItem>Home</NavItem>
-          <NavItem>Sign In</NavItem>
-          <NavItem>Sign Out</NavItem>
+          <StyledLink to="/" component={Home}>
+            Home
+          </StyledLink>
+          <StyledLink to="/signin" component={SignIn}>
+            SignIn
+          </StyledLink>
+          <StyledLink to="/signout" component={SignOut}>
+            Sign Out
+          </StyledLink>
         </NavItems>
       </Wrapper>
     );

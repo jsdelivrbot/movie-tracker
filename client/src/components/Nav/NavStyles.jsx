@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -15,6 +16,10 @@ export const NavItems = styled.ul`
   display: flex;
 `;
 
-export const NavItem = styled.li`
+export const StyledLink = styled(Link)`
   margin-right: 2rem;
+  text-decoration-color: default;
+  &:hover {
+    opacity: 0.7;
+  }
 `;
