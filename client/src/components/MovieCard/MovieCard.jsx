@@ -2,7 +2,6 @@ import React from 'react';
 import {
   Card,
   CardActions,
-  CardHeader,
   CardMedia,
   CardTitle,
   CardText
@@ -18,7 +17,10 @@ const MovieCard = ({
 }) => (
   <Card>
     <CardMedia>
-      <img src={'https://image.tmdb.org/t/p/original/' + poster_path} alt="" />
+      <img
+        src={'https://image.tmdb.org/t/p/original/' + poster_path}
+        alt={title}
+      />
     </CardMedia>
     <CardTitle title={title} subtitle={'Release Date: ' + release_date} />
     <CardText>{overview}</CardText>
