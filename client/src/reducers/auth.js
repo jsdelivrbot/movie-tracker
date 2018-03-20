@@ -9,12 +9,14 @@ const initialState = {
 
 export default handleActions(
   {
-    AUTH_USER: (state, action) => {
-      return {
-        ...state,
-        isAuthenticated: true
-      };
-    }
+    AUTH_USER: (state, action) => ({
+      ...state,
+      isAuthenticated: true
+    }),
+    UNAUTH_USER: (state, action) => ({
+      ...state,
+      isAuthenticated: false
+    })
   },
   initialState
 );

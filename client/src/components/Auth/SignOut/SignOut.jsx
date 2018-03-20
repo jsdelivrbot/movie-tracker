@@ -1,7 +1,21 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-export default class SignOut extends Component {
+import { signOutUser } from '../../../actions/auth';
+import { getAuthStatus } from '../../../reducers/auth';
+
+class SignOut extends Component {
+  componentWillMount() {
+    this.props.signOutUser();
+  }
+
   render() {
-    return <div>Sign Out</div>;
+    return <div>Sorry to see you go...</div>;
   }
 }
+
+const mapStateToProps = (state) => ({
+  isAuthenticated: getAuthStatus(state)
+});
+
+export default connect(mapStateToProps, { signOutUser })(SignOut);

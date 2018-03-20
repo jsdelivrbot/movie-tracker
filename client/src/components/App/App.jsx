@@ -15,6 +15,7 @@ const App = () => (
         <Nav />
         <Route exact path="/" component={Home} />
         <Route exact path="/signin" component={SignIn} />
+        <Route exact path="/signout" component={SignOut} />
       </Wrapper>
     </Router>
   </MuiThemeProvider>
