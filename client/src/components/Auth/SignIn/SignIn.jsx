@@ -5,24 +5,28 @@ import { connect } from 'react-redux';
 import { StyledCard, FieldWrapper } from './SignInStyles';
 import RaisedButton from 'material-ui/RaisedButton';
 import { TextField } from 'redux-form-material-ui';
+import { signInUser } from '../../../actions/auth';
 
 class SignIn extends Component {
   handleFormSubmit = ({ email, password }) => {
-    console.log({ email, password });
+    this.props.signInUser({ email, password }, () => {
+      this.props.history.push('/');
+    });
   };
 
   render() {
     const { handleSubmit, fields: { email, password } } = this.props;
-    console.log(this.props);
+
     return (
       <form onSubmit={handleSubmit(this.handleFormSubmit)}>
         <StyledCard>
           <span>Sign in to MovieTracker</span>
           <FieldWrapper>
             <Field
+              autoFocus={true}
               name="email"
               component={TextField}
-              fullWidth="true"
+              fullWidth={true}
               hintText="Email"
             />
           </FieldWrapper>
@@ -31,7 +35,7 @@ class SignIn extends Component {
               name="password"
               type="password"
               component={TextField}
-              fullWidth="true"
+              fullWidth={true}
               hintText="Password"
             />
           </FieldWrapper>
@@ -47,4 +51,4 @@ class SignIn extends Component {
 export default reduxForm({
   form: 'signin',
   fields: ['email', 'password']
-})(connect(null)(SignIn));
+})(connect(null, { signInUser })(SignIn));

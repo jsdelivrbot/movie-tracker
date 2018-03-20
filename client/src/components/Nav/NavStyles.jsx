@@ -6,9 +6,14 @@ export const Wrapper = styled.div`
   justify-content: space-between;
 `;
 
-export const Title = styled.span`
+export const Title = styled(Link)`
   font-weight: bold;
   font-size: 1.25rem;
+  color: #52565f;
+  &:hover {
+    color: #52565f;
+    opacity: 0.7;
+  }
 `;
 
 export const NavItems = styled.ul`
