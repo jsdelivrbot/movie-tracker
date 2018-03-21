@@ -3,7 +3,12 @@ import { createAction } from 'redux-actions';
 
 const ROOT_URL = 'http://localhost:3000';
 
-export const signInUser = ({ email, password }, callback) => {
+// const apiMapping = {
+//   '/signin': '/api/users',
+//   '/signup': '/api/users/new'
+// };
+
+export const signInUser = ({ url, email, password }, callback) => {
   return (dispatch) => {
     axios
       .post(`${ROOT_URL}/api/users`, { email, password })
@@ -14,6 +19,22 @@ export const signInUser = ({ email, password }, callback) => {
       .catch((error) => {
         const errorMsg = 'Email and/or password is invalid.';
         dispatch(authError(errorMsg));
+      });
+  };
+};
+
+export const signUpUser = ({ name, email, password }, callback) => {
+  return (dispatch) => {
+    axios
+      .post(`${ROOT_URL}/api/users/new`, { name, email, password })
+      .then((response) => {
+        dispatch({ type: 'AUTH_USER' });
+        // localStorage.setItem('isAuthenticated', 'true')
+        callback();
+      })
+      .catch((response) => {
+        console.log(response);
+        // dispatch(authError(response.data.error));
       });
   };
 };

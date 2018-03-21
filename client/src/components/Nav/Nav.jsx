@@ -5,6 +5,7 @@ import { Wrapper, Title, NavItems, StyledLink } from './NavStyles';
 import Home from '../Home/Home';
 import SignIn from '../Auth/SignIn/SignIn';
 import SignOut from '../Auth/SignOut/SignOut';
+import SignUp from '../Auth/SignUp/SignUp';
 import { getAuthStatus } from '../../reducers/auth';
 
 class Nav extends Component {
@@ -19,10 +20,10 @@ class Nav extends Component {
 
   renderSignedOut = () => [
     <StyledLink to="/signin" component={SignIn} key={1}>
-      SignIn
+      Sign In
     </StyledLink>,
-    <StyledLink to="/signout" component={SignOut} key={2}>
-      Sign Out
+    <StyledLink to="/signup" component={SignUp} key={2}>
+      Sign Up
     </StyledLink>
   ];
 

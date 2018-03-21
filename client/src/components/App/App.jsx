@@ -6,6 +6,7 @@ import Nav from '../Nav/Nav';
 import Home from '../../containers/Home';
 import SignIn from '../Auth/SignIn/SignIn';
 import SignOut from '../Auth/SignOut/SignOut';
+import SignUp from '../Auth/SignUp/SignUp';
 import { Wrapper } from './AppStyles';
 
 const App = () => (
@@ -16,6 +17,7 @@ const App = () => (
         <Route exact path="/" component={Home} />
         <Route exact path="/signin" component={SignIn} />
         <Route exact path="/signout" component={SignOut} />
+        <Route exact path="/signup" component={SignUp} />
       </Wrapper>
     </Router>
   </MuiThemeProvider>
