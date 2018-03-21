@@ -21,7 +21,8 @@ class SignUp extends Component {
   render() {
     const {
       handleSubmit,
-      fields: { email, password, passwordConfirm }
+      fields: { email, password, passwordConfirm },
+      errorMsg
     } = this.props;
 
     return (
@@ -46,6 +47,7 @@ class SignUp extends Component {
                 fullWidth={true}
                 hintText="Email"
                 errorStyle={errorStyle}
+                errorText={errorMsg}
               />
             </FieldWrapper>
             <FieldWrapper>
@@ -83,8 +85,12 @@ const validate = (...props) => {
   return errors;
 };
 
+const mapStateToProps = (state) => ({
+  errorMsg: getErrorMsg(state)
+});
+
 export default reduxForm({
   form: 'signup',
   fields: ['name', 'email', 'password', 'passwordConfirm'],
   validate
-})(connect(null, { signUpUser })(SignUp));
+})(connect(mapStateToProps, { signUpUser })(SignUp));

@@ -3,11 +3,6 @@ import { createAction } from 'redux-actions';
 
 const ROOT_URL = 'http://localhost:3000';
 
-// const apiMapping = {
-//   '/signin': '/api/users',
-//   '/signup': '/api/users/new'
-// };
-
 export const signInUser = ({ url, email, password }, callback) => {
   return (dispatch) => {
     axios
@@ -32,9 +27,9 @@ export const signUpUser = ({ name, email, password }, callback) => {
         // localStorage.setItem('isAuthenticated', 'true')
         callback();
       })
-      .catch((response) => {
-        console.log(response);
-        // dispatch(authError(response.data.error));
+      .catch((error) => {
+        const errorMsg = 'Email has already been used.';
+        dispatch(authError(errorMsg));
       });
   };
 };

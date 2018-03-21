@@ -9,8 +9,8 @@ import { signInUser } from '../../../actions/auth';
 import { getErrorMsg } from '../../../reducers/auth';
 
 class SignIn extends Component {
-  handleFormSubmit = (...props) => {
-    this.props.signInUser(...props, () => {
+  handleFormSubmit = (formProps) => {
+    this.props.signInUser(formProps, () => {
       this.props.history.push('/');
     });
   };
