@@ -4,13 +4,18 @@ import { connect } from 'react-redux';
 import { Card, CardMedia, CardHeader, CardText } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import { imgStyles, StyledHeart } from './MovieCardStyles';
-import { getAuthStatus } from '../../reducers/auth';
+import { getAuthStatus, getUserId } from '../../reducers/auth';
 
 class MovieCard extends Component {
-  handleClick = (id) => {
-    const { isAuthenticated } = this.props;
+  handleClick = (movieId) => {
+    const { isAuthenticated, userId } = this.props;
     if (isAuthenticated) {
       console.log('Decide whether to add or delete from favorites');
+      console.log({ userId, movieId });
+      // if this movieId is in this user's favorites,
+      // deleteFavorite
+      // else
+      // addFavorite
     } else {
       console.log('Show modal');
     }
@@ -46,7 +51,8 @@ class MovieCard extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  isAuthenticated: getAuthStatus(state)
+  isAuthenticated: getAuthStatus(state),
+  userId: getUserId(state)
 });
 
 export default connect(mapStateToProps)(MovieCard);

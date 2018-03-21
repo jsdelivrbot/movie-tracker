@@ -24,6 +24,7 @@ class SignIn extends Component {
           <span>Sign in to MovieTracker</span>
           <FieldWrapper>
             <Field
+              autoFocus={true}
               name="email"
               component={TextField}
               fullWidth={true}

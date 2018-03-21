@@ -8,7 +8,8 @@ export const signInUser = ({ url, email, password }, callback) => {
     axios
       .post(signInUserEndpoint, { email, password })
       .then((response) => {
-        dispatch({ type: 'AUTH_USER' });
+        const { id } = response.data.data;
+        dispatch({ type: 'AUTH_USER', payload: id });
         callback();
       })
       .catch((error) => {
@@ -23,7 +24,8 @@ export const signUpUser = ({ name, email, password }, callback) => {
     axios
       .post(signUpUserEndpoint, { name, email, password })
       .then((response) => {
-        dispatch({ type: 'AUTH_USER' });
+        const { id } = response.data.data;
+        dispatch({ type: 'AUTH_USER', payload: id });
         // localStorage.setItem('isAuthenticated', 'true')
         callback();
       })
