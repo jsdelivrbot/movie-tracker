@@ -11,6 +11,8 @@ import {
 } from '../../actions/favorites';
 import { getAuthStatus, getUserId } from '../../reducers/auth';
 
+const ROOT_IMG_URL = 'https://image.tmdb.org/t/p/original/';
+
 class MovieCard extends Component {
   handleClick = () => {
     const { isAuthenticated } = this.props;
@@ -19,9 +21,12 @@ class MovieCard extends Component {
 
   updateFavorites = () => {
     const movie_id = this.props.id;
+    const new_poster_path = `${ROOT_IMG_URL}${this.props.poster_path}`;
+    const { user_id } = this.props;
+
     this.isFavorited()
-      ? addFavorite({ ...this.props, movie_id })
-      : deleteFavorite({ ...this.props, movie_id });
+      ? deleteFavorite({ ...this.props, movie_id })
+      : addFavorite({ ...this.props, movie_id, poster_path: new_poster_path });
   };
 
   isFavorited = () => {
@@ -39,7 +44,7 @@ class MovieCard extends Component {
       release_date,
       vote_average
     } = this.props;
-    const src = `https://image.tmdb.org/t/p/original/${poster_path}`;
+    const src = `${ROOT_IMG_URL}${poster_path}`;
     const subtitle = `Release Date: ${release_date}`;
 
     return (

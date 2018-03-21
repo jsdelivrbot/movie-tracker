@@ -6,7 +6,7 @@ import {
   getDeleteFavoriteEndpoint
 } from '../utils/endpoints';
 
-export const addFavorite = async (data) => {
+export const addFavorite = (data) => {
   const {
     movie_id,
     user_id,
@@ -16,7 +16,7 @@ export const addFavorite = async (data) => {
     release_date,
     vote_average
   } = data;
-  const response = await axios.post(addFavoriteEndpoint, {
+  axios.post(addFavoriteEndpoint, {
     movie_id,
     user_id,
     title,
@@ -30,14 +30,5 @@ export const addFavorite = async (data) => {
 export const deleteFavorite = (data) => {
   const deleteFavoriteEndpoint = getDeleteFavoriteEndpoint(data);
   const { user_id, movie_id } = data;
-  return (dispatch) => {
-    axios
-      .post(deleteFavoriteEndpoint, { user_id, movie_id })
-      .then((response) => {
-        dispatch({ type: 'DELETE_FAVORITE', payload: data });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+  axios.delete(deleteFavoriteEndpoint, { user_id, movie_id });
 };
