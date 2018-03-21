@@ -1,7 +1,6 @@
-// const Server = require('./server');
 const path = require('path');
 const express = require('express');
-const cors = require('express-cors');
+const cors = require('cors');
 var bodyParser = require('body-parser');
 const port = process.env.PORT || 3000;
 const app = express();
@@ -28,7 +27,6 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 app.use(express.static('app'));
-
 app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, '/index.html'));
 });
