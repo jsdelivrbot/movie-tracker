@@ -1,12 +1,12 @@
 import axios from 'axios';
 import { createAction } from 'redux-actions';
 
-const ROOT_URL = 'http://localhost:3000';
+import { signInUserEndpoint, signUpUserEndpoint } from '../utils/endpoints';
 
 export const signInUser = ({ url, email, password }, callback) => {
   return (dispatch) => {
     axios
-      .post(`${ROOT_URL}/api/users`, { email, password })
+      .post(signInUserEndpoint, { email, password })
       .then((response) => {
         dispatch({ type: 'AUTH_USER' });
         callback();
@@ -21,7 +21,7 @@ export const signInUser = ({ url, email, password }, callback) => {
 export const signUpUser = ({ name, email, password }, callback) => {
   return (dispatch) => {
     axios
-      .post(`${ROOT_URL}/api/users/new`, { name, email, password })
+      .post(signUpUserEndpoint, { name, email, password })
       .then((response) => {
         dispatch({ type: 'AUTH_USER' });
         // localStorage.setItem('isAuthenticated', 'true')
