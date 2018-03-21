@@ -1,0 +1,19 @@
+2018-03-21 15:39:07.019 PDT [695] LOG:  listening on IPv6 address "::1", port 5432
+2018-03-21 15:39:07.019 PDT [695] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2018-03-21 15:39:07.020 PDT [695] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2018-03-21 15:39:07.032 PDT [696] LOG:  database system was shut down at 2018-03-21 15:38:40 PDT
+2018-03-21 15:39:07.036 PDT [695] LOG:  database system is ready to accept connections
+2018-03-21 15:39:10.547 PDT [704] FATAL:  database "patrick" does not exist
+2018-03-21 15:40:06.381 PDT [711] FATAL:  database "users" does not exist
+2018-03-21 16:02:51.214 PDT [934] ERROR:  syntax error at or near "$" at character 106
+2018-03-21 16:02:51.214 PDT [934] STATEMENT:  insert into favorites(movie_id, user_id, title, poster_path, release_date, vote_average, overview)values(${data.movie_id}, ${data.user_id}, ${data.title}, ${data.poster_path}, ${data.release_date}, ${data.vote_average}, ${data.overview}) returning id
+2018-03-21 16:03:07.661 PDT [934] ERROR:  syntax error at or near "$" at character 106
+2018-03-21 16:03:07.661 PDT [934] STATEMENT:  insert into favorites(movie_id, user_id, title, poster_path, release_date, vote_average, overview)values(${data.movie_id}, ${data.user_id}, ${data.title}, ${data.poster_path}, ${data.release_date}, ${data.vote_average}, ${data.overview}) returning id
+2018-03-21 16:06:41.629 PDT [959] ERROR:  syntax error at or near "$" at character 106
+2018-03-21 16:06:41.629 PDT [959] STATEMENT:  insert into favorites(movie_id, user_id, title, poster_path, release_date, vote_average, overview)values(${data[movie_id]}, ${data.user_id}, ${data.title}, ${data.poster_path}, ${data.release_date}, ${data.vote_average}, ${data.overview}) returning id
+2018-03-21 16:07:17.961 PDT [962] ERROR:  syntax error at or near "$" at character 106
+2018-03-21 16:07:17.961 PDT [962] STATEMENT:  insert into favorites(movie_id, user_id, title, poster_path, release_date, vote_average, overview)values(${data[movie_id]}, ${data.user_id}, ${data.title}, ${data.poster_path}, ${data.release_date}, ${data.vote_average}, ${data.overview}) returning id
+2018-03-21 16:07:40.138 PDT [962] ERROR:  syntax error at or near "$" at character 106
+2018-03-21 16:07:40.138 PDT [962] STATEMENT:  insert into favorites(movie_id, user_id, title, poster_path, release_date, vote_average, overview)values(${data[movie_id]}, ${data.user_id}, ${data.title}, ${data.poster_path}, ${data.release_date}, ${data.vote_average}, ${data.overview}) returning id
+2018-03-21 16:21:08.243 PDT [1044] ERROR:  syntax error at or near "$" at character 106
+2018-03-21 16:21:08.243 PDT [1044] STATEMENT:  insert into favorites(movie_id, user_id, title, poster_path, release_date, vote_average, overview)values(${data[movie_id]}, ${data[user_id]}, ${data.title}, ${data.poster_path}, ${data.release_date}, ${data.vote_average}, ${data.overview}) returning id

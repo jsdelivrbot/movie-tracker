@@ -8,17 +8,17 @@ const initialState = {
 export default handleActions(
   {
     AUTH_USER: (state, action) => {
-      const userId = action.payload;
+      const user_id = action.payload;
       return {
         ...state,
         isAuthenticated: true,
-        userId
+        user_id
       };
     },
     UNAUTH_USER: (state, action) => ({
       ...state,
       isAuthenticated: false,
-      userId: null
+      user_id: null
     }),
     AUTH_ERROR: (state, action) => {
       const errorMsg = action.payload;
@@ -36,4 +36,4 @@ export const getAuthStatus = (state) =>
 
 export const getErrorMsg = (state) => state.auth.errorMsg;
 
-export const getUserId = (state) => state.auth.userId;
+export const getUserId = (state) => state.auth.user_id;

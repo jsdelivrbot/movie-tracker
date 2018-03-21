@@ -8,7 +8,7 @@ var pgp = require('pg-promise')(options);
 var connectionString = 'postgres://localhost:5432/users';
 var db = pgp(connectionString);
 
-const getAllUsers = (req, res, next) => {
+function getAllUsers(req, res, next) {
   db
     .any('select * from users')
     .then(function(data) {
@@ -21,9 +21,9 @@ const getAllUsers = (req, res, next) => {
     .catch(function(err) {
       return next(err);
     });
-};
+}
 
-const signIn = (req, res, next) => {
+function signIn(req, res, next) {
   db
     .one(
       'select * from users where email=${email} and password=${password}',
@@ -39,9 +39,9 @@ const signIn = (req, res, next) => {
     .catch(function(err) {
       return next(err);
     });
-};
+}
 
-const createUser = (req, res, next) => {
+function createUser(req, res, next) {
   req.body.email = req.body.email.toLowerCase();
   db
     .one(
@@ -57,9 +57,9 @@ const createUser = (req, res, next) => {
     .catch(function(err) {
       res.status(500).json({ error: err.detail });
     });
-};
+}
 
-const addFavorite = (req, res, next) => {
+function addFavorite(req, res, next) {
   db
     .one(
       'insert into favorites(movie_id, user_id, title, poster_path, release_date, vote_average, overview)' +
@@ -76,9 +76,9 @@ const addFavorite = (req, res, next) => {
     .catch(function(err) {
       next(err);
     });
-};
+}
 
-const getAllFavorites = (req, res, next) => {
+function getAllFavorites(req, res, next) {
   var user_id = parseInt(req.params.id);
   db
     .any('select * from favorites where user_id=$1', user_id)
@@ -92,9 +92,9 @@ const getAllFavorites = (req, res, next) => {
     .catch(function(err) {
       return next(err);
     });
-};
+}
 
-const deleteFavorite = (req, res, next) => {
+function deleteFavorite(req, res, next) {
   var movie_id = parseInt(req.params.movie_id);
   var user_id = parseInt(req.params.id);
   db
@@ -111,7 +111,7 @@ const deleteFavorite = (req, res, next) => {
     .catch(function(err) {
       return next(err);
     });
-};
+}
 
 module.exports = {
   getAllUsers: getAllUsers,

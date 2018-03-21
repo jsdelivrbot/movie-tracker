@@ -1,19 +1,43 @@
 import axios from 'axios';
 import { createAction } from 'redux-actions';
 
-import { addFavoriteEndpoint } from '../utils/endpoints';
+import {
+  addFavoriteEndpoint,
+  getDeleteFavoriteEndpoint
+} from '../utils/endpoints';
 
-export const addFavorite = ({ movieId }, callback) => {
+export const addFavorite = async (data) => {
+  const {
+    movie_id,
+    user_id,
+    title,
+    overview,
+    poster_path,
+    release_date,
+    vote_average
+  } = data;
+  const response = await axios.post(addFavoriteEndpoint, {
+    movie_id,
+    user_id,
+    title,
+    overview,
+    poster_path,
+    release_date,
+    vote_average
+  });
+};
+
+export const deleteFavorite = (data) => {
+  const deleteFavoriteEndpoint = getDeleteFavoriteEndpoint(data);
+  const { user_id, movie_id } = data;
   return (dispatch) => {
     axios
-      .post(addFavoriteEndpoint, { email, password })
+      .post(deleteFavoriteEndpoint, { user_id, movie_id })
       .then((response) => {
-        dispatch({ type: 'AUTH_USER' });
-        callback();
+        dispatch({ type: 'DELETE_FAVORITE', payload: data });
       })
       .catch((error) => {
-        const errorMsg = 'Email and/or password is invalid.';
-        dispatch(authError(errorMsg));
+        console.log(error);
       });
   };
 };
