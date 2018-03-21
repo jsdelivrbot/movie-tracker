@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
+import { ThemeProvider } from 'styled-components';
 
 import { StyledCard, FieldWrapper, errorStyle } from '../Form/FormStyles';
+import { signUpForm } from './SignUpStyles';
 import RaisedButton from 'material-ui/RaisedButton';
 import { TextField } from 'redux-form-material-ui';
 import { getErrorMsg } from '../../../reducers/auth';
@@ -19,61 +21,58 @@ class SignUp extends Component {
   render() {
     const {
       handleSubmit,
-      fields: { email, password, passwordConfirm },
-      errorMsg
+      fields: { email, password, passwordConfirm }
     } = this.props;
 
     return (
       <form onSubmit={handleSubmit(this.handleFormSubmit)}>
-        <StyledCard>
-          <span>Sign up for MovieTracker</span>
-          <FieldWrapper>
-            <Field
-              autoFocus={true}
-              name="name"
-              component={TextField}
-              fullWidth={true}
-              hintText="Name"
-              errorText={errorMsg}
-              errorStyle={errorStyle}
-            />
-          </FieldWrapper>
-          <FieldWrapper>
-            <Field
-              name="email"
-              component={TextField}
-              fullWidth={true}
-              hintText="Email"
-              errorText={errorMsg}
-              errorStyle={errorStyle}
-            />
-          </FieldWrapper>
-          <FieldWrapper>
-            <Field
-              name="password"
-              type="password"
-              component={TextField}
-              fullWidth={true}
-              hintText="Password"
-              errorText={errorMsg}
-              errorStyle={errorStyle}
-            />
-          </FieldWrapper>
-          <FieldWrapper>
-            <Field
-              name="passwordConfirm"
-              type="password"
-              component={TextField}
-              fullWidth={true}
-              hintText="Confirm Password"
-              errorText={errorMsg}
-              errorStyle={errorStyle}
-            />
-          </FieldWrapper>
-          <FieldWrapper>
-            <RaisedButton type="submit" label="Submit" />
-          </FieldWrapper>
-        </StyledCard>
+        <ThemeProvider theme={signUpForm}>
+          <StyledCard>
+            <span>Sign up for MovieTracker</span>
+            <FieldWrapper>
+              <Field
+                autoFocus={true}
+                name="name"
+                component={TextField}
+                fullWidth={true}
+                hintText="Name"
+                errorStyle={errorStyle}
+              />
+            </FieldWrapper>
+            <FieldWrapper>
+              <Field
+                name="email"
+                component={TextField}
+                fullWidth={true}
+                hintText="Email"
+                errorStyle={errorStyle}
+              />
+            </FieldWrapper>
+            <FieldWrapper>
+              <Field
+                name="password"
+                type="password"
+                component={TextField}
+                fullWidth={true}
+                hintText="Password"
+                errorStyle={errorStyle}
+              />
+            </FieldWrapper>
+            <FieldWrapper>
+              <Field
+                name="passwordConfirm"
+                type="password"
+                component={TextField}
+                fullWidth={true}
+                hintText="Confirm Password"
+                errorStyle={errorStyle}
+              />
+            </FieldWrapper>
+            <FieldWrapper>
+              <RaisedButton type="submit" label="Submit" />
+            </FieldWrapper>
+          </StyledCard>
+        </ThemeProvider>
       </form>
     );
   }
@@ -84,12 +83,8 @@ const validate = (...props) => {
   return errors;
 };
 
-const mapStateToProps = (state) => ({
-  errorMsg: state.auth.errorMsg
-});
-
 export default reduxForm({
   form: 'signup',
-  fields: ['email', 'password', 'passwordConfirm'],
+  fields: ['name', 'email', 'password', 'passwordConfirm'],
   validate
-})(connect(mapStateToProps, { signUpUser })(SignUp));
+})(connect(null, { signUpUser })(SignUp));
