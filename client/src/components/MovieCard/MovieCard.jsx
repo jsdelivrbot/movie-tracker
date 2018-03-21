@@ -1,12 +1,8 @@
 import React from 'react';
-import {
-  Card,
-  CardActions,
-  CardMedia,
-  CardTitle,
-  CardText
-} from 'material-ui/Card';
+import { Card, CardMedia, CardHeader, CardText } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
+
+import { imgStyles, StyledHeart } from './MovieCardStyles';
 
 const MovieCard = ({
   title,
@@ -18,15 +14,19 @@ const MovieCard = ({
   <Card>
     <CardMedia>
       <img
+        style={imgStyles}
         src={'https://image.tmdb.org/t/p/original/' + poster_path}
         alt={title}
       />
     </CardMedia>
-    <CardTitle title={title} subtitle={'Release Date: ' + release_date} />
-    <CardText>{overview}</CardText>
-    <CardActions>
-      <FlatButton label="Favorite" />
-    </CardActions>
+    <CardHeader
+      actAsExpander={true}
+      showExpandableButton={true}
+      title={title}
+      subtitle={'Release Date: ' + release_date}
+    />
+    <StyledHeart size={45} />
+    <CardText expandable={true}>{overview}</CardText>
   </Card>
 );
 
