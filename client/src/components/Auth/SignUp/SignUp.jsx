@@ -8,10 +8,14 @@ import { signUpForm } from './SignUpStyles';
 import RaisedButton from 'material-ui/RaisedButton';
 import { TextField } from 'redux-form-material-ui';
 import { getErrorMsg } from '../../../reducers/auth';
-import { signUpUser } from '../../../actions/auth';
+import { signUpUser, resetErrorMsg } from '../../../actions/auth';
 import { getSignUpErrorMsgs } from './signUpHelpers';
 
 class SignUp extends Component {
+  componentWillMount() {
+    this.props.resetErrorMsg();
+  }
+
   handleFormSubmit = (formProps) => {
     this.props.signUpUser(formProps, () => {
       this.props.history.push('/');
@@ -93,4 +97,4 @@ export default reduxForm({
   form: 'signup',
   fields: ['name', 'email', 'password', 'passwordConfirm'],
   validate
-})(connect(mapStateToProps, { signUpUser })(SignUp));
+})(connect(mapStateToProps, { signUpUser, resetErrorMsg })(SignUp));

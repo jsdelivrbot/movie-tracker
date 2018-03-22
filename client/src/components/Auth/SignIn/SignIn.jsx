@@ -5,10 +5,14 @@ import { connect } from 'react-redux';
 import { StyledCard, FieldWrapper, errorStyle } from '../Form/FormStyles';
 import RaisedButton from 'material-ui/RaisedButton';
 import { TextField } from 'redux-form-material-ui';
-import { signInUser } from '../../../actions/auth';
+import { signInUser, resetErrorMsg } from '../../../actions/auth';
 import { getErrorMsg } from '../../../reducers/auth';
 
 class SignIn extends Component {
+  componentWillMount() {
+    this.props.resetErrorMsg();
+  }
+
   handleFormSubmit = (formProps) => {
     this.props.signInUser(formProps, () => {
       this.props.history.push('/');
@@ -60,4 +64,4 @@ const mapStateToProps = (state) => ({
 export default reduxForm({
   form: 'signin',
   fields: ['email', 'password']
-})(connect(mapStateToProps, { signInUser })(SignIn));
+})(connect(mapStateToProps, { signInUser, resetErrorMsg })(SignIn));

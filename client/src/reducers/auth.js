@@ -26,7 +26,11 @@ export default handleActions(
         ...state,
         errorMsg
       };
-    }
+    },
+    RESET_ERROR_MSG: (state, action) => ({
+      ...state,
+      errorMsg: ''
+    })
   },
   initialState
 );

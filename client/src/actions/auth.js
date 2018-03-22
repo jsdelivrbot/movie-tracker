@@ -37,6 +37,7 @@ export const signUpUser = ({ name, email, password }, callback) => {
   };
 };
 
+export const resetErrorMsg = createAction('RESET_ERROR_MSG');
 export const authError = createAction('AUTH_ERROR');
 
 export const signOutUser = () => {
