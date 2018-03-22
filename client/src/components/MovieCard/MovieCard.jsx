@@ -11,41 +11,39 @@ import {
 } from '../../actions/favorites';
 import { getAuthStatus, getUserId } from '../../reducers/auth';
 
-const ROOT_IMG_URL = 'https://image.tmdb.org/t/p/original/';
-
 class MovieCard extends Component {
-  handleClick = () => {
-    const { isAuthenticated } = this.props;
-    isAuthenticated ? this.updateFavorites() : this.renderModal();
+  handleClick = (props) => {
+    const { isAuthenticated } = props;
+    isAuthenticated ? this.updateFavorites(props) : this.renderModal();
   };
 
-  updateFavorites = () => {
+  updateFavorites = async (props) => {
+    const isFavorited = await this.checkIfIsFavorited();
+    isFavorited ? deleteFavorite(props) : addFavorite(props);
+  };
+
+  checkIfIsFavorited = async () => {
     const movie_id = this.props.id;
-    const new_poster_path = `${ROOT_IMG_URL}${this.props.poster_path}`;
-    const { user_id } = this.props;
-
-    this.isFavorited()
-      ? deleteFavorite({ ...this.props, movie_id })
-      : addFavorite({ ...this.props, movie_id, poster_path: new_poster_path });
-  };
-
-  isFavorited = () => {
-    return true;
+    const favorites = await getFavorites(this.props);
+    const result = favorites.some((favorite) => favorite.movie_id === movie_id);
+    return result;
   };
 
   renderModal = () => <div>Hi, my name is Modal</div>;
 
   render() {
     const {
-      id,
       title,
       overview,
       poster_path,
       release_date,
       vote_average
     } = this.props;
+    const ROOT_IMG_URL = 'https://image.tmdb.org/t/p/original/';
     const src = `${ROOT_IMG_URL}${poster_path}`;
+    const movie_id = this.props.id;
     const subtitle = `Release Date: ${release_date}`;
+    const newProps = { ...this.props, movie_id, poster_path: src };
 
     return (
       <Card>
@@ -58,7 +56,7 @@ class MovieCard extends Component {
           title={title}
           subtitle={subtitle}
         />
-        <StyledHeart onClick={this.handleClick} size={45} />
+        <StyledHeart onClick={() => this.handleClick(newProps)} size={45} />
         <CardText expandable={true}>{overview}</CardText>
       </Card>
     );
@@ -70,6 +68,8 @@ const mapStateToProps = (state) => ({
   user_id: getUserId(state)
 });
 
-export default connect(mapStateToProps, { addFavorite, deleteFavorite })(
-  MovieCard
-);
+export default connect(mapStateToProps, {
+  addFavorite,
+  deleteFavorite,
+  getFavorites
+})(MovieCard);
