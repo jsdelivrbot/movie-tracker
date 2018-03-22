@@ -68,3 +68,31 @@
 2018-03-21 23:28:08.623 PDT [4058] ERROR:  duplicate key value violates unique constraint "email"
 2018-03-21 23:28:08.623 PDT [4058] DETAIL:  Key (email)=(paul@yahoo.com) already exists.
 2018-03-21 23:28:08.623 PDT [4058] STATEMENT:  insert into users(name, password, email)values('Paul', 'hey', 'paul@yahoo.com') returning id
+2018-03-22 08:57:25.519 PDT [796] ERROR:  cannot drop the currently open database
+2018-03-22 08:57:25.519 PDT [796] STATEMENT:  DROP DATABASE IF EXISTS users;
+2018-03-22 08:57:25.523 PDT [796] ERROR:  database "users" already exists
+2018-03-22 08:57:25.523 PDT [796] STATEMENT:  CREATE DATABASE users;
+2018-03-22 08:57:25.545 PDT [5044] ERROR:  relation "users" already exists
+2018-03-22 08:57:25.545 PDT [5044] STATEMENT:  CREATE TABLE users (
+	  id SERIAL NOT NULL PRIMARY KEY,
+	  name VARCHAR (123) NOT NULL,
+	  password VARCHAR (123) NOT NULL,
+	  email VARCHAR (123) NOT NULL
+	);
+2018-03-22 08:57:25.575 PDT [5044] ERROR:  relation "favorites" already exists
+2018-03-22 08:57:25.575 PDT [5044] STATEMENT:  CREATE TABLE favorites (
+	  id SERIAL NOT NULL PRIMARY KEY,
+	  movie_id INTEGER NOT NULL,
+	  user_id INTEGER NOT NULL,
+	  title VARCHAR (123) NOT NULL,
+	  poster_path VARCHAR (250) NOT NULL,
+	  release_date VARCHAR (123) NOT NULL,
+	  vote_average VARCHAR (123) NOT NULL,
+	  overview VARCHAR NOT NULL
+	);
+2018-03-22 08:57:25.578 PDT [5044] ERROR:  relation "email" already exists
+2018-03-22 08:57:25.578 PDT [5044] STATEMENT:  CREATE UNIQUE INDEX email ON users (email);
+2018-03-22 08:57:25.580 PDT [5044] ERROR:  duplicate key value violates unique constraint "email"
+2018-03-22 08:57:25.580 PDT [5044] DETAIL:  Key (email)=(tman2272@aol.com) already exists.
+2018-03-22 08:57:25.580 PDT [5044] STATEMENT:  INSERT INTO users (name, password, email)
+	  VALUES ('Taylor', 'password', 'tman2272@aol.com');

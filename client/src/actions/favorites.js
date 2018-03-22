@@ -11,14 +11,9 @@ const ADD_FAVORITE = 'ADD_FAVORITE';
 
 export const addFavorite = (data) => {
   return (dispatch) => {
-    axios
-      .post(addFavoriteEndpoint, { ...data })
-      .then((response) => {
-        dispatch({ type: 'ADD_FAVORITE', payload: { ...data } });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    axios.post(addFavoriteEndpoint, { ...data }).then((response) => {
+      dispatch({ type: 'ADD_FAVORITE', payload: { ...data } });
+    });
   };
 };
 
@@ -28,10 +23,12 @@ export const deleteFavorite = async (data) => {
   await axios.delete(deleteFavoriteEndpoint, { user_id, movie_id });
 };
 
-export const getFavorites = async (props) => {
-  const { user_id } = props;
-  const allFavoritesEndpoint = getAllFavoritesEndpoint(props);
-  const response = await axios(allFavoritesEndpoint, { user_id });
-  const favorites = response.data.data;
-  return favorites;
-};
+// export const getFavorites = async (props) => {
+//   const { user_id } = props;
+//   const allFavoritesEndpoint = getAllFavoritesEndpoint(props);
+//   const response = await axios(allFavoritesEndpoint, { user_id });
+//   const favorites = response.data.data;
+//   return favorites;
+// };
+
+export const getFavorites = (state) => state.favorites;

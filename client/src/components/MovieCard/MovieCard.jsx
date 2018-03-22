@@ -20,14 +20,18 @@ class MovieCard extends Component {
   updateFavorites = async (props) => {
     const { deleteFavorite, addFavorite } = props;
     const isFavorited = await this.checkIfIsFavorited(props);
+    console.log(isFavorited);
     isFavorited ? deleteFavorite(props) : addFavorite(props);
   };
 
   checkIfIsFavorited = async (props) => {
-    const movie_id = props.id;
-    const favorites = await getFavorites(props);
-    const result = favorites.some((favorite) => favorite.movie_id === movie_id);
-    return result;
+    const { favorites, movie_id, user_id } = props;
+
+    if (!favorites[user_id]) {
+      return false;
+    }
+
+    return Boolean(favorites[user_id][movie_id]);
   };
 
   renderModal = () => <div>Hi, my name is Modal</div>;
@@ -66,11 +70,11 @@ class MovieCard extends Component {
 
 const mapStateToProps = (state) => ({
   isAuthenticated: getAuthStatus(state),
-  user_id: getUserId(state)
+  user_id: getUserId(state),
+  favorites: getFavorites(state)
 });
 
 export default connect(mapStateToProps, {
   addFavorite,
-  deleteFavorite,
-  getFavorites
+  deleteFavorite
 })(MovieCard);
