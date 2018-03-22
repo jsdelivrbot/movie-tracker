@@ -6,6 +6,7 @@ import {
   getDeleteFavoriteEndpoint,
   getAllFavoritesEndpoint
 } from '../utils/endpoints';
+import { getUserId } from '../reducers/auth';
 
 const ADD_FAVORITE = 'ADD_FAVORITE';
 
@@ -20,15 +21,13 @@ export const addFavorite = (data) => {
 export const deleteFavorite = async (data) => {
   const deleteFavoriteEndpoint = getDeleteFavoriteEndpoint(data);
   const { user_id, movie_id } = data;
-  await axios.delete(deleteFavoriteEndpoint, { user_id, movie_id });
+  return (dispatch) => {
+    axios
+      .delete(deleteFavoriteEndpoint, { user_id, movie_id })
+      .then((response) => {
+        dispatch({ type: 'DELETE_FAVORITE', payload: { user_id, movie_id } });
+      });
+  };
 };
-
-// export const getFavorites = async (props) => {
-//   const { user_id } = props;
-//   const allFavoritesEndpoint = getAllFavoritesEndpoint(props);
-//   const response = await axios(allFavoritesEndpoint, { user_id });
-//   const favorites = response.data.data;
-//   return favorites;
-// };
 
 export const getFavorites = (state) => state.favorites;

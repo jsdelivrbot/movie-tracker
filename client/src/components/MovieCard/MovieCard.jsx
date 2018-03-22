@@ -12,6 +12,21 @@ import {
 import { getAuthStatus, getUserId } from '../../reducers/auth';
 
 class MovieCard extends Component {
+  state = {
+    isFavorited: null
+  };
+
+  componentWillMount() {
+    const isFavorited = this.checkIfIsFavorited();
+    this.setState({ isFavorited });
+  }
+
+  checkIfIsFavorited = () => {
+    const { favorites } = this.props;
+    const movie_id = this.props.id;
+    return Boolean(favorites[movie_id]);
+  };
+
   handleClick = (props) => {
     const { isAuthenticated } = props;
     isAuthenticated ? this.updateFavorites(props) : this.renderModal();
@@ -19,19 +34,9 @@ class MovieCard extends Component {
 
   updateFavorites = async (props) => {
     const { deleteFavorite, addFavorite } = props;
-    const isFavorited = await this.checkIfIsFavorited(props);
-    console.log(isFavorited);
+    const { isFavorited } = this.state;
     isFavorited ? deleteFavorite(props) : addFavorite(props);
-  };
-
-  checkIfIsFavorited = async (props) => {
-    const { favorites, movie_id, user_id } = props;
-
-    if (!favorites[user_id]) {
-      return false;
-    }
-
-    return Boolean(favorites[user_id][movie_id]);
+    this.setState({ isFavorited: !this.state.isFavorited });
   };
 
   renderModal = () => <div>Hi, my name is Modal</div>;
@@ -61,7 +66,11 @@ class MovieCard extends Component {
           title={title}
           subtitle={subtitle}
         />
-        <StyledHeart onClick={() => this.handleClick(newProps)} size={45} />
+        <StyledHeart
+          isFavorited={this.state.isFavorited}
+          onClick={() => this.handleClick(newProps)}
+          size={45}
+        />
         <CardText expandable={true}>{overview}</CardText>
       </Card>
     );

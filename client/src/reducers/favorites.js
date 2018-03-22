@@ -1,4 +1,5 @@
 import { handleActions } from 'redux-actions';
+import omit from 'lodash/omit';
 
 const initialState = {};
 
@@ -6,17 +7,19 @@ export default handleActions(
   {
     ADD_FAVORITE: (state, action) => {
       const movieData = action.payload;
-      const { user_id, movie_id } = movieData;
+      const { movie_id, title } = movieData;
 
       return {
         ...state,
-        [user_id]: {
-          [movie_id]: {
-            ...movieData
-          },
-          ...state[user_id]
+        [movie_id]: {
+          title
         }
       };
+    },
+    DELETE_FAVORITE: (state, action) => {
+      const { movie_id } = action.payload;
+      const newState = omit(state, [movie_id]);
+      return { ...newState };
     }
   },
   initialState

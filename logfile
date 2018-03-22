@@ -96,3 +96,14 @@
 2018-03-22 08:57:25.580 PDT [5044] DETAIL:  Key (email)=(tman2272@aol.com) already exists.
 2018-03-22 08:57:25.580 PDT [5044] STATEMENT:  INSERT INTO users (name, password, email)
 	  VALUES ('Taylor', 'password', 'tman2272@aol.com');
+2018-03-22 09:40:20.254 PDT [5044] ERROR:  syntax error at or near "users" at character 1
+2018-03-22 09:40:20.254 PDT [5044] STATEMENT:  users
+	drop schema public cascade;
+2018-03-22 09:40:24.185 PDT [5044] ERROR:  schema "public" already exists
+2018-03-22 09:40:24.185 PDT [5044] STATEMENT:  create schema public;
+2018-03-22 09:40:39.643 PDT [5307] ERROR:  relation "favorites" does not exist at character 15
+2018-03-22 09:40:39.643 PDT [5307] STATEMENT:  select * from favorites where user_id=12
+2018-03-22 09:40:51.681 PDT [5044] ERROR:  cannot drop the currently open database
+2018-03-22 09:40:51.681 PDT [5044] STATEMENT:  DROP DATABASE IF EXISTS users;
+2018-03-22 09:40:51.682 PDT [5044] ERROR:  database "users" already exists
+2018-03-22 09:40:51.682 PDT [5044] STATEMENT:  CREATE DATABASE users;
