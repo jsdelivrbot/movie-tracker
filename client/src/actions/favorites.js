@@ -7,32 +7,25 @@ import {
   getAllFavoritesEndpoint
 } from '../utils/endpoints';
 
-export const addFavorite = (data) => {
-  const {
-    movie_id,
-    user_id,
-    title,
-    overview,
-    poster_path,
-    release_date,
-    vote_average
-  } = data;
+const ADD_FAVORITE = 'ADD_FAVORITE';
 
-  axios.post(addFavoriteEndpoint, {
-    movie_id,
-    user_id,
-    title,
-    overview,
-    poster_path,
-    release_date,
-    vote_average
-  });
+export const addFavorite = (data) => {
+  return (dispatch) => {
+    axios
+      .post(addFavoriteEndpoint, { ...data })
+      .then((response) => {
+        dispatch({ type: 'ADD_FAVORITE', payload: { ...data } });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 };
 
-export const deleteFavorite = (data) => {
+export const deleteFavorite = async (data) => {
   const deleteFavoriteEndpoint = getDeleteFavoriteEndpoint(data);
   const { user_id, movie_id } = data;
-  axios.delete(deleteFavoriteEndpoint, { user_id, movie_id });
+  await axios.delete(deleteFavoriteEndpoint, { user_id, movie_id });
 };
 
 export const getFavorites = async (props) => {

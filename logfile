@@ -27,3 +27,44 @@
 2018-03-21 16:55:53.805 PDT [2908] STATEMENT:  select * from favorites where user_id='NaN'
 2018-03-21 16:57:00.329 PDT [2920] ERROR:  invalid input syntax for integer: "NaN" at character 39
 2018-03-21 16:57:00.329 PDT [2920] STATEMENT:  select * from favorites where user_id='NaN'
+2018-03-21 17:59:30.348 PDT [3303] ERROR:  invalid input syntax for integer: "NaN" at character 39
+2018-03-21 17:59:30.348 PDT [3303] STATEMENT:  select * from favorites where user_id='NaN'
+2018-03-21 17:59:30.360 PDT [3303] ERROR:  invalid input syntax for integer: "NaN" at character 39
+2018-03-21 17:59:30.360 PDT [3303] STATEMENT:  select * from favorites where user_id='NaN'
+2018-03-21 17:59:30.363 PDT [3303] ERROR:  invalid input syntax for integer: "NaN" at character 39
+2018-03-21 17:59:30.363 PDT [3303] STATEMENT:  select * from favorites where user_id='NaN'
+2018-03-21 17:59:30.367 PDT [3303] ERROR:  invalid input syntax for integer: "NaN" at character 39
+2018-03-21 17:59:30.367 PDT [3303] STATEMENT:  select * from favorites where user_id='NaN'
+2018-03-21 17:59:30.370 PDT [3303] ERROR:  invalid input syntax for integer: "NaN" at character 39
+2018-03-21 17:59:30.370 PDT [3303] STATEMENT:  select * from favorites where user_id='NaN'
+2018-03-21 17:59:30.374 PDT [3303] ERROR:  invalid input syntax for integer: "NaN" at character 39
+2018-03-21 17:59:30.374 PDT [3303] STATEMENT:  select * from favorites where user_id='NaN'
+2018-03-21 17:59:30.378 PDT [3303] ERROR:  invalid input syntax for integer: "NaN" at character 39
+2018-03-21 17:59:30.378 PDT [3303] STATEMENT:  select * from favorites where user_id='NaN'
+2018-03-21 17:59:30.381 PDT [3303] ERROR:  invalid input syntax for integer: "NaN" at character 39
+2018-03-21 17:59:30.381 PDT [3303] STATEMENT:  select * from favorites where user_id='NaN'
+2018-03-21 17:59:30.384 PDT [3303] ERROR:  invalid input syntax for integer: "NaN" at character 39
+2018-03-21 17:59:30.384 PDT [3303] STATEMENT:  select * from favorites where user_id='NaN'
+2018-03-21 17:59:30.388 PDT [3303] ERROR:  invalid input syntax for integer: "NaN" at character 39
+2018-03-21 17:59:30.388 PDT [3303] STATEMENT:  select * from favorites where user_id='NaN'
+2018-03-21 17:59:30.391 PDT [3303] ERROR:  invalid input syntax for integer: "NaN" at character 39
+2018-03-21 17:59:30.391 PDT [3303] STATEMENT:  select * from favorites where user_id='NaN'
+2018-03-21 17:59:30.395 PDT [3303] ERROR:  invalid input syntax for integer: "NaN" at character 39
+2018-03-21 17:59:30.395 PDT [3303] STATEMENT:  select * from favorites where user_id='NaN'
+2018-03-21 17:59:30.399 PDT [3303] ERROR:  invalid input syntax for integer: "NaN" at character 39
+2018-03-21 17:59:30.399 PDT [3303] STATEMENT:  select * from favorites where user_id='NaN'
+2018-03-21 17:59:30.403 PDT [3303] ERROR:  invalid input syntax for integer: "NaN" at character 39
+2018-03-21 17:59:30.403 PDT [3303] STATEMENT:  select * from favorites where user_id='NaN'
+2018-03-21 17:59:30.428 PDT [3303] ERROR:  invalid input syntax for integer: "NaN" at character 39
+2018-03-21 17:59:30.428 PDT [3303] STATEMENT:  select * from favorites where user_id='NaN'
+2018-03-21 17:59:30.434 PDT [3303] ERROR:  invalid input syntax for integer: "NaN" at character 39
+2018-03-21 17:59:30.434 PDT [3303] STATEMENT:  select * from favorites where user_id='NaN'
+2018-03-21 17:59:30.438 PDT [3303] ERROR:  invalid input syntax for integer: "NaN" at character 39
+2018-03-21 17:59:30.438 PDT [3303] STATEMENT:  select * from favorites where user_id='NaN'
+2018-03-21 17:59:30.441 PDT [3303] ERROR:  invalid input syntax for integer: "NaN" at character 39
+2018-03-21 17:59:30.441 PDT [3303] STATEMENT:  select * from favorites where user_id='NaN'
+2018-03-21 17:59:30.445 PDT [3303] ERROR:  invalid input syntax for integer: "NaN" at character 39
+2018-03-21 17:59:30.445 PDT [3303] STATEMENT:  select * from favorites where user_id='NaN'
+2018-03-21 23:28:08.623 PDT [4058] ERROR:  duplicate key value violates unique constraint "email"
+2018-03-21 23:28:08.623 PDT [4058] DETAIL:  Key (email)=(paul@yahoo.com) already exists.
+2018-03-21 23:28:08.623 PDT [4058] STATEMENT:  insert into users(name, password, email)values('Paul', 'hey', 'paul@yahoo.com') returning id

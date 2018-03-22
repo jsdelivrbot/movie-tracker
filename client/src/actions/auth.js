@@ -24,12 +24,13 @@ export const signUpUser = ({ name, email, password }, callback) => {
     axios
       .post(signUpUserEndpoint, { name, email, password })
       .then((response) => {
-        const { id } = response.data.data;
+        const { id } = response.data;
         dispatch({ type: 'AUTH_USER', payload: id });
         // localStorage.setItem('isAuthenticated', 'true')
         callback();
       })
       .catch((error) => {
+        console.log(error);
         const errorMsg = 'Email has already been used.';
         dispatch(authError(errorMsg));
       });

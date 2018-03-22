@@ -7,6 +7,7 @@ const UPDATE_RECENT_MOVIES = 'UPDATE_RECENT_MOVIES';
 
 export const fetchRecentMovies = async () => {
   const response = await axios.get(`${ROOT_URL}${API_KEY}`);
+
   return {
     type: UPDATE_RECENT_MOVIES,
     payload: response.data

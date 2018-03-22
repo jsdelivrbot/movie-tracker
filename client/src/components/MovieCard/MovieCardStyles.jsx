@@ -8,4 +8,6 @@ export const imgStyles = {
 
 export const StyledHeart = styled(Heart)`
   padding-left: 1rem;
+  cursor: pointer;
+  fill: ${(props) => (props.isFavorited ? 'black' : 'white')};
 `;

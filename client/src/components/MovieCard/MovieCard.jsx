@@ -18,13 +18,14 @@ class MovieCard extends Component {
   };
 
   updateFavorites = async (props) => {
-    const isFavorited = await this.checkIfIsFavorited();
+    const { deleteFavorite, addFavorite } = props;
+    const isFavorited = await this.checkIfIsFavorited(props);
     isFavorited ? deleteFavorite(props) : addFavorite(props);
   };
 
-  checkIfIsFavorited = async () => {
-    const movie_id = this.props.id;
-    const favorites = await getFavorites(this.props);
+  checkIfIsFavorited = async (props) => {
+    const movie_id = props.id;
+    const favorites = await getFavorites(props);
     const result = favorites.some((favorite) => favorite.movie_id === movie_id);
     return result;
   };
