@@ -20,7 +20,10 @@ export default handleActions(
       const { movie_id } = action.payload;
       const newState = omit(state, [movie_id]);
       return { ...newState };
-    }
+    },
+    RESET_FAVORITES: (state, action) => ({
+      initialState
+    })
   },
   initialState
 );

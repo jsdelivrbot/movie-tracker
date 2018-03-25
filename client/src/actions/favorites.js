@@ -8,8 +8,6 @@ import {
 } from '../utils/endpoints';
 import { getUserId } from '../reducers/auth';
 
-const ADD_FAVORITE = 'ADD_FAVORITE';
-
 export const addFavorite = (data) => {
   return (dispatch) => {
     axios.post(addFavoriteEndpoint, { ...data }).then((response) => {
@@ -29,5 +27,7 @@ export const deleteFavorite = async (data) => {
       });
   };
 };
+
+export const resetFavorites = createAction('RESET_FAVORITES');
 
 export const getFavorites = (state) => state.favorites;

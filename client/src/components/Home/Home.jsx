@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import { Wrapper, Title, CardList } from './HomeStyles';
 import MovieCard from '../MovieCard/MovieCard';
+import { recentMovies } from './data';
 
 export default class Home extends Component {
   componentDidMount() {
@@ -20,7 +21,7 @@ export default class Home extends Component {
   isEmpty = (recentMovies) => recentMovies.length === 0;
 
   render() {
-    const { recentMovies } = this.props;
+    // const { recentMovies } = this.props;
 
     if (this.isEmpty(recentMovies)) return <div>Loading</div>;
 

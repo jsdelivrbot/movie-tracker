@@ -3,10 +3,13 @@ import { connect } from 'react-redux';
 
 import { signOutUser } from '../../../actions/auth';
 import { getAuthStatus } from '../../../reducers/auth';
+import { resetFavorites } from '../../../actions/favorites';
 
 class SignOut extends Component {
   componentWillMount() {
-    this.props.signOutUser();
+    const { signOutUser, resetFavorites } = this.props;
+    signOutUser();
+    resetFavorites();
   }
 
   render() {
@@ -18,4 +21,6 @@ const mapStateToProps = (state) => ({
   isAuthenticated: getAuthStatus(state)
 });
 
-export default connect(mapStateToProps, { signOutUser })(SignOut);
+export default connect(mapStateToProps, { signOutUser, resetFavorites })(
+  SignOut
+);
