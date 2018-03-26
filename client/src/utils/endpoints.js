@@ -7,5 +7,5 @@ export const addFavoriteEndpoint = `${ROOT_URL}/api/users/favorites/new`;
 export const getDeleteFavoriteEndpoint = ({ user_id, movie_id }) =>
   `${ROOT_URL}/api/users/${user_id}/favorites/${movie_id}`;
 
-export const getAllFavoritesEndpoint = ({ user_id }) =>
+export const getAllFavoritesEndpoint = (user_id) =>
   `${ROOT_URL}/api/users/${user_id}/favorites`;

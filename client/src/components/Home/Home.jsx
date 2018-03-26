@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import { Wrapper, Title, CardList } from './HomeStyles';
 import MovieCard from '../MovieCard/MovieCard';
 import { recentMovies } from './data';
+import { getUserId } from '../../reducers/auth';
+import { getAllFavorites } from '../../actions/favorites';
 
-export default class Home extends Component {
+class Home extends Component {
   componentDidMount() {
-    this.props.fetchRecentMovies();
+    const { fetchRecentMovies, getAllFavorites, user_id } = this.props;
+    fetchRecentMovies();
+    getAllFavorites(user_id);
   }
 
   renderMovieCards = (recentMovies) =>
@@ -33,3 +38,9 @@ export default class Home extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  user_id: getUserId(state)
+});
+
+export default connect(mapStateToProps, { getAllFavorites })(Home);

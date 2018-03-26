@@ -107,3 +107,9 @@
 2018-03-22 09:40:51.681 PDT [5044] STATEMENT:  DROP DATABASE IF EXISTS users;
 2018-03-22 09:40:51.682 PDT [5044] ERROR:  database "users" already exists
 2018-03-22 09:40:51.682 PDT [5044] STATEMENT:  CREATE DATABASE users;
+2018-03-26 09:54:32.904 PDT [9976] ERROR:  invalid input syntax for integer: "NaN" at character 39
+2018-03-26 09:54:32.904 PDT [9976] STATEMENT:  select * from favorites where user_id='NaN'
+2018-03-26 09:55:26.649 PDT [9988] ERROR:  invalid input syntax for integer: "NaN" at character 39
+2018-03-26 09:55:26.649 PDT [9988] STATEMENT:  select * from favorites where user_id='NaN'
+2018-03-26 09:56:13.917 PDT [9994] ERROR:  invalid input syntax for integer: "NaN" at character 39
+2018-03-26 09:56:13.917 PDT [9994] STATEMENT:  select * from favorites where user_id='NaN'

@@ -28,6 +28,20 @@ export const deleteFavorite = async (data) => {
   };
 };
 
+export const getAllFavorites = async (user_id) => {
+  const allFavoritesEndpoint = getAllFavoritesEndpoint(user_id);
+  return (dispatch) => {
+    axios
+      .get(allFavoritesEndpoint, { user_id })
+      .then((response) => {
+        dispatch({ type: 'GET_FAVORITES', payload: response.data.data });
+      })
+      .catch((error) => {
+        dispatch({ type: 'RESET_FAVORITES', payload: null });
+      });
+  };
+};
+
 export const resetFavorites = createAction('RESET_FAVORITES');
 
 export const getFavorites = (state) => state.favorites;

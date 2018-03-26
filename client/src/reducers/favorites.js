@@ -22,8 +22,12 @@ export default handleActions(
       return { ...newState };
     },
     RESET_FAVORITES: (state, action) => ({
-      initialState
-    })
+      ...initialState
+    }),
+    GET_FAVORITES: (state, action) => {
+      const favorites = action.payload;
+      return { ...favorites };
+    }
   },
   initialState
 );

@@ -7,9 +7,7 @@ import { resetFavorites } from '../../../actions/favorites';
 
 class SignOut extends Component {
   componentWillMount() {
-    const { signOutUser, resetFavorites } = this.props;
-    signOutUser();
-    resetFavorites();
+    this.props.signOutUser();
   }
 
   render() {
