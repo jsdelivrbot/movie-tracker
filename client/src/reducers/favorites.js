@@ -1,5 +1,6 @@
 import { handleActions } from 'redux-actions';
 import omit from 'lodash/omit';
+import mapKeys from 'lodash/mapKeys';
 
 const initialState = {};
 
@@ -21,13 +22,14 @@ export default handleActions(
       const newState = omit(state, [movie_id]);
       return { ...newState };
     },
-    RESET_FAVORITES: (state, action) => ({
-      ...initialState
-    }),
     GET_FAVORITES: (state, action) => {
       const favorites = action.payload;
-      return { ...favorites };
-    }
+      const newFavorites = mapKeys(favorites, (val) => val.movie_id);
+      return { ...newFavorites };
+    },
+    RESET_FAVORITES: (state, action) => ({
+      ...initialState
+    })
   },
   initialState
 );

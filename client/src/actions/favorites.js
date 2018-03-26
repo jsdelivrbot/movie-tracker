@@ -34,7 +34,7 @@ export const getAllFavorites = async (user_id) => {
     axios
       .get(allFavoritesEndpoint, { user_id })
       .then((response) => {
-        dispatch({ type: 'GET_FAVORITES', payload: response.data.data });
+        dispatch({ type: 'GET_FAVORITES', payload: { ...response.data.data } });
       })
       .catch((error) => {
         dispatch({ type: 'RESET_FAVORITES', payload: null });
